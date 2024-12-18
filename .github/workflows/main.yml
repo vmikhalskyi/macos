@@ -16,6 +16,6 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run Echo Action
-        uses: ./github/actions/echo-action
+        uses: ./.github/actions/echo-action
         with:
           message: "Running on ${{ matrix.os }}"
