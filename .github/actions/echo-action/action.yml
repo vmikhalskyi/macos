@@ -10,3 +10,7 @@ runs:
     - name: Run echo command
       shell: bash
       run: echo "${{ inputs.message }}"
+    - name: Setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.12.4
