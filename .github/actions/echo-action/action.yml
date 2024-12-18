@@ -1,0 +1,11 @@
+name: "Echo Action"
+description: "A simple composite action to run an echo command"
+inputs:
+  message:
+    description: "The message to echo"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Run echo command
+      run: echo "${{ inputs.message }}"

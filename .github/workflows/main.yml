@@ -1,0 +1,21 @@
+name: "MacOS Matrix Workflow"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  echo-matrix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-14]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Echo Action
+        uses: ./github/actions/echo-action
+        with:
+          message: "Running on ${{ matrix.os }}"
