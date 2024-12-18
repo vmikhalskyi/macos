@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14]
+        os: [macos-14, macos-latest]
     permissions:
       id-token: write
       contents: read
@@ -18,13 +18,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: AWS
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: sample
-          role-session-name: sample
-          audience: sample
-          aws-region: us-east-1
+      # - name: AWS
+      #   uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     role-to-assume: sample
+      #     role-session-name: sample
+      #     audience: sample
+      #     aws-region: us-east-1
 
       - name: Run Echo Action
         uses: ./.github/actions/echo-action
