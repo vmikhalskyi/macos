@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: AWS
-        uses: aws-actions@configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: sample
           role-session-name: sample
