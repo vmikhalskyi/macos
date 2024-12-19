@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14, macos-14-large]
+        os: [macos-14, macos-13]
     permissions:
       id-token: write
       contents: read
