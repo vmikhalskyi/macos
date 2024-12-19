@@ -9,7 +9,9 @@ runs:
   steps:
     - name: Run echo command
       shell: bash
-      run: echo "${{ inputs.message }}"
+      run: |
+        echo "${{ inputs.message }}"
+        echo "${{ runner.arch }}"
     - name: Setup python
       uses: actions/setup-python@v5
       with:
