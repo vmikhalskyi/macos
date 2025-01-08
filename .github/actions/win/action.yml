@@ -15,16 +15,17 @@ runs:
       run: |
         echo "${{ inputs.message }}"
         echo "${{ runner.arch }}"
-    - name: Setup python
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.12.4
+    # - name: Setup python
+    #   uses: actions/setup-python@v5
+    #   with:
+    #     python-version: 3.12.4
     - name: Create ZIP name
       id: zip_name
       shell: pwsh
       run: |
         $zip_name = "desktop-${{ inputs.sample }}-${{ runner.arch }}.zip"
-        echo "zip_name=$zip_name" >> $env:GITHUB_ENV 
+        Add-Content -Path $env:GITHUB_ENV -Value "zip_name=$zip_name"
+        Write-Host "Created ZIP name: $zip_name"
     - name: Check name
       shell: pwsh
       run: "${{ env.zip_name }}"
