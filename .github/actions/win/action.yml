@@ -4,6 +4,9 @@ inputs:
   message:
     description: "The message to echo"
     required: true
+  sample:
+    description: "asldfa"
+    required: true 
 runs:
   using: "composite"
   steps:
@@ -16,3 +19,12 @@ runs:
       uses: actions/setup-python@v5
       with:
         python-version: 3.12.4
+    - name: Create ZIP name
+      id: zip_name
+      shell: pwsh
+      run: |
+        $zip_name = "desktop-${{ inputs.sample }}-${{ runner.arch }}.zip"
+        echo "zip_name=$zip_name" >> $env:GITHUB_ENV -Encoding utf8
+    - name: Check name
+      shell: pwsh
+      run: "${{ env.zip_name }}"
