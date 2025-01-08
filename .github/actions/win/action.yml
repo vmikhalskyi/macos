@@ -19,22 +19,22 @@ runs:
     #   uses: actions/setup-python@v5
     #   with:
     #     python-version: 3.12.4
-    - name: Set the value
-      id: step_one
-      shell: pwsh
-      run: |
-        echo "action_state=yellow" | Out-File -FilePath $env:GITHUB_ENV -Append # no need for -Encoding utf8
-    - name: Use the value
-      shell: pwsh
-      id: step_two
-      run: |
-        echo "${{ env.action_state }}" # This will output 'yellow'
-    # - name: Create ZIP name
-    #   id: zip_name
+    # - name: Set the value
+    #   id: step_one
     #   shell: pwsh
     #   run: |
-    #     $zip_name = "desktop-${{ inputs.sample }}-${{ runner.arch }}.zip"
-    #     echo "zip_name=$zip_name" | Out-File -FilePath $env:GITHUB_ENV
-    # - name: Check name
+    #     echo "action_state=yellow" | Out-File -FilePath $env:GITHUB_ENV -Append # no need for -Encoding utf8
+    # - name: Use the value
     #   shell: pwsh
-    #   run: "${{ env.zip_name }}"
+    #   id: step_two
+    #   run: |
+    #     echo "${{ env.action_state }}" # This will output 'yellow'
+    - name: Create ZIP name
+      id: zip_name
+      shell: pwsh
+      run: |
+        $zip_name = "desktop-${{ inputs.sample }}-${{ runner.arch }}.zip"
+        echo "zip_name=$zip_name" | Out-File -FilePath $env:GITHUB_ENV -Append
+    - name: Check name
+      shell: pwsh
+      run: "${{ env.zip_name }}"
