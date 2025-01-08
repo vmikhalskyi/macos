@@ -42,4 +42,4 @@ runs:
       shell: pwsh
       run: |
         echo 'sample' >> sample.txt
-        zip -r "sample.txt" "sample.zip"
+        Compress-Archive -Path sample.txt -Destination sample.zip
