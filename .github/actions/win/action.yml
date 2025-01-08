@@ -43,3 +43,7 @@ runs:
       run: |
         echo 'sample' >> sample.txt
         Compress-Archive -Path sample.txt -Destination sample.zip
+
+    - name: test aws
+      shell: pwsh
+      run: aws s3 ls
