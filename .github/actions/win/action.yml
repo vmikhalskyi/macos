@@ -37,3 +37,9 @@ runs:
     - name: Check name
       shell: pwsh
       run: "echo ${{ env.zip_name }}"
+
+    - name: Zip exec
+      shell: pwsh
+      run: |
+        echo 'sample' >> sample.txt
+        zip -r "sample.txt" "sample.zip"
