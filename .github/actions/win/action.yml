@@ -24,7 +24,7 @@ runs:
       shell: pwsh
       run: |
         $zip_name = "desktop-${{ inputs.sample }}-${{ runner.arch }}.zip"
-        echo "zip_name=$zip_name" >> $env:GITHUB_ENV -Encoding utf8
+        echo "zip_name=$zip_name" >> $env:GITHUB_ENV 
     - name: Check name
       shell: pwsh
       run: "${{ env.zip_name }}"
