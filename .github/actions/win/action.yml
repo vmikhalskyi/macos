@@ -24,8 +24,7 @@ runs:
       shell: pwsh
       run: |
         $zip_name = "desktop-${{ inputs.sample }}-${{ runner.arch }}.zip"
-        Add-Content -Path $env:GITHUB_ENV -Value "zip_name=$zip_name"
-        Write-Host "Created ZIP name: $zip_name"
+        echo "zip_name=$zip_name" | Out-File -FilePath $env:GITHUB_ENV
     - name: Check name
       shell: pwsh
       run: "${{ env.zip_name }}"
