@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-14, macos-13]
+        os: [windows-2025]
     permissions:
       id-token: write
       contents: read
@@ -25,7 +25,6 @@ jobs:
       #     role-session-name: sample
       #     audience: sample
       #     aws-region: us-east-1
-
       - name: Run Echo Action
         uses: ./.github/actions/echo-action
         with:

@@ -1,0 +1,18 @@
+name: "Echo Action"
+description: "A simple composite action to run an echo command"
+inputs:
+  message:
+    description: "The message to echo"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Run echo command
+      shell: bash
+      run: |
+        echo "${{ inputs.message }}"
+        echo "${{ runner.arch }}"
+    - name: Setup python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.12.4
