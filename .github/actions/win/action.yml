@@ -33,8 +33,7 @@ runs:
       id: zip_name
       shell: pwsh
       run: |
-        $zip_name = "desktop-${{ inputs.sample }}-${{ runner.arch }}.zip"
-        echo "zip_name=$zip_name" | Out-File -FilePath $env:GITHUB_ENV -Append
+        echo "zip_name=desktop-${{ inputs.sample }}-${{ runner.arch }}.zip" | Out-File -FilePath $env:GITHUB_ENV -Append
     - name: Check name
       shell: pwsh
       run: "${{ env.zip_name }}"
