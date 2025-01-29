@@ -50,6 +50,6 @@ runs:
       run: dir
     - name: sadasd
       shell: pwsh
-      run: Write-Output settings.json
+      run: Get-Content settings.json
       
       
