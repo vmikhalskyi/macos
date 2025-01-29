@@ -47,7 +47,7 @@ runs:
         $json | Out-File settings.json
     - name: Generate settings.json
       shell: pwsh
-      run: ls -l
+      run: dir
     - name: sadasd
       shell: pwsh
       run: Write-Output settings.json
