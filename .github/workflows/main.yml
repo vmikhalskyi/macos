@@ -28,5 +28,6 @@ jobs:
       - name: Run Echo Action
         uses: ./.github/actions/win
         with:
-          message: "Running on ${{ matrix.os }}"
-          sample: "blabla"
+          WS_SERVER_HOST: "asasfasfasf"
+          AWS_REGION: "asdasdasd"
+          APP_BUCKET_NAME: "qwerty"

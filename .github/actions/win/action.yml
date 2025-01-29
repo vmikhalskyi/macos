@@ -1,12 +1,15 @@
 name: "Echo Action"
 description: "A simple composite action to run an echo command"
 inputs:
-  message:
+  WS_SERVER_HOST:
     description: "The message to echo"
     required: true
-  sample:
+  AWS_REGION:
     description: "asldfa"
     required: true 
+  APP_BUCKET_NAME:
+    description: "sadd"
+    required: true
 runs:
   using: "composite"
   steps:
@@ -29,21 +32,24 @@ runs:
     #   id: step_two
     #   run: |
     #     echo "${{ env.action_state }}" # This will output 'yellow'
-    - name: Create ZIP name
-      id: zip_name
+    - name: Generate settings.json
+        shell: pwsh
+        env:
+          WS_SERVER_HOST: ${{ inputs.WS_SERVER_HOST }}
+          AWS_REGION: ${{ inputs.AWS_REGION }}
+          APP_BUCKET_NAME: ${{ inputs.APP_BUCKET_NAME }}
+        run: |
+          $json = @{
+            websocket_server_host = "$env:WS_SERVER_HOST"
+            aws_region = "$env:AWS_REGION"
+            bucket_name = "$env:APP_BUCKET_NAME"
+          } | ConvertTo-Json -Depth 3
+          $json | Out-File settings.json
+    - name: Generate settings.json
+        shell: pwsh
+        run: ls -l
+    - name: sadasd
       shell: pwsh
-      run: |
-        echo "zip_name=desktop-${{ inputs.sample }}-${{ runner.arch }}.zip" | Out-File -FilePath $env:GITHUB_ENV -Append
-    - name: Check name
-      shell: pwsh
-      run: "echo ${{ env.zip_name }}"
-
-    - name: Zip exec
-      shell: pwsh
-      run: |
-        echo 'sample' >> sample.txt
-        Compress-Archive -Path sample.txt -Destination sample.zip
-
-    - name: test aws
-      shell: pwsh
-      run: aws s3 ls
+      run: Write-Output settings.json
+      
+      
